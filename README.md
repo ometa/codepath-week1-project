@@ -4,30 +4,39 @@
 
 Submitted by: **Devin Breen**
 
-Time Spent: **12** hours spent in total:
+Time Spent: **6** hours.
 
 ## User Stories
 
 The following **required** functionality is completed:
-- [x] Required: Adding and Removing todo items
-- [x] Required: Editing todo items w/ cursor focus
-- [x] Required: Persisting todo items to file and retrieval upon app restart
+- [x] User can scroll through current popular photos from Instagram
+- [x] For each photo displayed, user can see the following details:
+    - [x] Graphic, Caption, Username
+    - [x] Like count, user profile image
 
-The following **optional** features are implemented:
+Next up:
+- [x] (Optional) relative timestamp
 
-- [x] Recommended: Persistence to Sqlite using ActiveAndroid ORM
-- [x] Bonus: Priority field that gets a default when a task is added and updates via Spinner widget
-- [x] Bonus: Color-coded entries based on priority
-- [x] Misc: Don't allow adding a blank item
+The following optional user stories are completed:
+- [x] Advanced: Display each user profile image using a RoundedImageView
+- [x] Advanced: Display location if present
+- [] Advanced: Add pull-to-refresh for popular stream with SwipeRefreshLayout
+- [] Advanced: Show latest comment for each photo (bonus: show last 2 comments)
+- [] Advanced: Display each photo with the same style and proportions as the real Instagram (see screens below)
+- [] Advanced: Display a nice default placeholder graphic for each image during loading (read more about Picasso)
+- [] Advanced: Improve the user interface through styling and coloring
+- [] Bonus: Allow user to view all comments for an image within a separate activity or dialog fragment
+- [] Bonus: Allow video posts to be played in full-screen using the VideoView
 
 ## Video Walkthrough
 
-<img src='https://raw.githubusercontent.com/ometa/codepath-android-bootcamp/master/demo/project_0.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='https://raw.githubusercontent.com/ometa/codepath-week1-project/master/demo/project1-demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
+So far so good.
 Everything was pretty straightforward. The most time consuming part was getting
 the IDE and build envionment downloaded and configured correctly. Instructions were
 good, thanks! I built this while traveling on the Italian coast. The spotty internet
