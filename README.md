@@ -36,11 +36,8 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-So far so good.
-Everything was pretty straightforward. The most time consuming part was getting
-the IDE and build envionment downloaded and configured correctly. Instructions were
-good, thanks! I built this while traveling on the Italian coast. The spotty internet
-made it more time-consuming to solve issues.  ;)
+So far so good. The most confusing part is figuring out how to use
+RelativeLayout effectively.
 
 ## License
 
