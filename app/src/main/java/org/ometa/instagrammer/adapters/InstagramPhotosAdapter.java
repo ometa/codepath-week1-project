@@ -52,15 +52,12 @@ public class InstagramPhotosAdapter extends ArrayAdapter<Photo> {
 
     private void loadLocation(Photo photo, View convertView) {
         TextView tvLocation = (TextView) convertView.findViewById(R.id.tvLocation);
-//        LinearLayout ll = (LinearLayout) convertView.findViewById(R.id.llUserInfo);
         if (photo.getLocationName() != null) {
             tvLocation.setText(photo.getLocationName());
             // todo: lat and long
             tvLocation.setVisibility(View.VISIBLE);
-//            ll.setVerticalGravity();
         } else {
             tvLocation.setVisibility(View.GONE);
-//            ll.refreshDrawableState();
         }
     }
 
@@ -72,11 +69,16 @@ public class InstagramPhotosAdapter extends ArrayAdapter<Photo> {
         ivPhoto.setImageResource(android.R.color.transparent);
         ivUserPicture.setImageResource(android.R.color.transparent);
         // download using picasso
-        Picasso.with(getContext()).load(photo.getImageUrl()).into(ivPhoto);
+        Picasso.with(getContext()).load(photo.getImageUrl())
+                .placeholder(R.drawable.keep_calm_and_please_wait)
+                .into(ivPhoto);
 
-//        Picasso.with(getContext()).load(photo.getUserPictureUrl()).into(ivUserPicture);
+//      http://square.github.io/picasso/
+
+//      .error(R.drawable.user_placeholder_error)
 
         Picasso.with(getContext()).load(photo.getUserPictureUrl())
-                .transform(new CropCircleTransformation()).into(ivUserPicture);
+                .transform(new CropCircleTransformation())
+                .into(ivUserPicture);
     }
 }
