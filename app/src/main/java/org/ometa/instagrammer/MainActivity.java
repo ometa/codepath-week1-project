@@ -94,30 +94,16 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-//                super.onSuccess(statusCode, headers, response);
-
-//                Type: 		{ "data" => [x] => "type" } ("image" or "video")
-//                Caption: 	{ "data" => [x] => "caption"  => "text" }
-//                URL: 		{ "data" => [x] => "images" => "standard_resolution" => "url" }
-//                Author Name	{ "data" => [x] => "user" => "username" }
-
                 JSONArray photosJSON = null;
                 try {
                     photosJSON = response.getJSONArray("data");
-                    for(int i = 0; i < photosJSON.length(); i++) {
+                    for (int i = 0; i < photosJSON.length(); i++) {
                         JSONObject photoJSON = photosJSON.getJSONObject(i);
-                        Photo photo = new Photo();
-                        photo.username = photoJSON.getJSONObject("user").getString("username");
-                        photo.caption = photoJSON.getJSONObject("caption").getString("text");
-                        photo.type = photoJSON.getString("type");
-                        photo.imageUrl = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getString("url");
-                        photo.imageHeight = photoJSON.getJSONObject("images").getJSONObject("standard_resolution").getInt("height");
-
-                        photos.add(photo);
+                        photos.add(new Photo(photoJSON));
                     }
 
-                } catch (JSONException ex) {
-                    ex.printStackTrace();
+                } catch (JSONException e) {
+                    e.printStackTrace();
                 }
                 aPhotos.notifyDataSetChanged();
             }
@@ -129,9 +115,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.i("HEADERS", headers.toString());
             }
         });
-
-
-
     }
 
 

@@ -15,6 +15,8 @@ import org.ometa.instagrammer.models.Photo;
 
 import java.util.List;
 
+import jp.wasabeef.picasso.transformations.CropCircleTransformation;
+
 /**
  * Created by devin on 10/22/15.
  */
@@ -34,16 +36,41 @@ public class InstagramPhotosAdapter extends ArrayAdapter<Photo> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.item_photo, parent, false);
         }
         TextView tvCaption = (TextView) convertView.findViewById(R.id.tvCaption);
-        tvCaption.setText(photo.caption);
+        tvCaption.setText(photo.getCaption());
 
-        ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
+        TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
+        tvUsername.setText(photo.getUsername());
 
-        // clear out in case we recycled
-        ivPhoto.setImageResource(android.R.color.transparent);
-
-        // download using picasso
-        Picasso.with(getContext()).load(photo.imageUrl).into(ivPhoto);
+        loadLocation(photo, convertView);
+        loadImages(photo, convertView);
 
         return convertView;
+    }
+
+    private void loadLocation(Photo photo, View convertView) {
+        TextView tvLocation = (TextView) convertView.findViewById(R.id.tvLocation);
+        if (photo.getLocationName() != null) {
+            tvLocation.setText(photo.getLocationName());
+            // todo: lat and long
+            tvLocation.setVisibility(View.VISIBLE);
+        } else {
+            tvLocation.setVisibility(View.GONE);
+        }
+    }
+
+    private void loadImages(Photo photo, View convertView) {
+        // Initialize photos
+        ImageView ivPhoto = (ImageView) convertView.findViewById(R.id.ivPhoto);
+        ImageView ivUserPicture = (ImageView) convertView.findViewById(R.id.ivUserPicture);
+        // clear out in case we recycled
+        ivPhoto.setImageResource(android.R.color.transparent);
+        ivUserPicture.setImageResource(android.R.color.transparent);
+        // download using picasso
+        Picasso.with(getContext()).load(photo.getImageUrl()).into(ivPhoto);
+
+//        Picasso.with(getContext()).load(photo.getUserPictureUrl()).into(ivUserPicture);
+
+        Picasso.with(getContext()).load(photo.getUserPictureUrl())
+                .transform(new CropCircleTransformation()).into(ivUserPicture);
     }
 }
