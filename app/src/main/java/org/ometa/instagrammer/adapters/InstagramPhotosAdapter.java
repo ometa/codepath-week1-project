@@ -41,6 +41,9 @@ public class InstagramPhotosAdapter extends ArrayAdapter<Photo> {
         TextView tvUsername = (TextView) convertView.findViewById(R.id.tvUsername);
         tvUsername.setText(photo.getUsername());
 
+        TextView tvLikeCount = (TextView) convertView.findViewById(R.id.tvLikeCount);
+        tvLikeCount.setText(String.valueOf(photo.getLikesString()));
+
         loadLocation(photo, convertView);
         loadImages(photo, convertView);
 
@@ -49,12 +52,15 @@ public class InstagramPhotosAdapter extends ArrayAdapter<Photo> {
 
     private void loadLocation(Photo photo, View convertView) {
         TextView tvLocation = (TextView) convertView.findViewById(R.id.tvLocation);
+//        LinearLayout ll = (LinearLayout) convertView.findViewById(R.id.llUserInfo);
         if (photo.getLocationName() != null) {
             tvLocation.setText(photo.getLocationName());
             // todo: lat and long
             tvLocation.setVisibility(View.VISIBLE);
+//            ll.setVerticalGravity();
         } else {
             tvLocation.setVisibility(View.GONE);
+//            ll.refreshDrawableState();
         }
     }
 

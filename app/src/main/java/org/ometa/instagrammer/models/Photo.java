@@ -46,6 +46,12 @@ public class Photo {
 
     // ------------------------------------------------
 
+    // todo: use figure out how to use strings.xml
+    public String getLikesString() {
+        String word = likesCount == 1 ? "like" : "likes";
+        return likesCount + " " + word;
+    }
+
     public float getLocationLatitude() {
         return locationLatitude;
     }
